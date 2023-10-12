@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>XMLHttpRequest</title>
+    </head>
+    <body>
+        <h3>Use th same rest countries and print all countries names, regions, sub-regions and population</h3>
+        <script>
+
+//create a new object
+var xhr=new XMLHttpRequest();
+var method='GET';
+var url="https://restcountries.com/v3.1/all";
+xhr.open(method,url,true);
+
+//onload
+xhr.onload = function(){
+    if(xhr.status === 200)
+    {
+        var response=JSON.parse(this.responseText);
+        console.log(response.length);
+        //console.log(response[0]);(here not show flage image)
+        //Display all countries Flag
+
+        for(var i=0; i<response.length; i++)
+        {
+            console.log("Countries Name : " , response[i].name.common);
+            console.log("Regions : " , response[i].region);
+            console.log("Sub-regions : " , response[i].subregion);
+            console.log("Population : " , response[i].population);
+
+            //if(response[i].population<200000)
+           // {
+           // }
+
+            console.log("**************");    
+              
+        }
+    }
+   // else{
+     //   console.log("Request failed",xhr.status)
+   // }
+};
+xhr.send();
+</script>
+    </body>
+</html>
